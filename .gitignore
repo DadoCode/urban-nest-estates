@@ -1,0 +1,21 @@
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+*.key
+secrets.json
+
+# Real client media (kept out of this public repo)
+assets/images/_private/
+assets/brochures/_private/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Tooling
+node_modules/
+.netlify/

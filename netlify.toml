@@ -1,0 +1,42 @@
+# Deployment configuration for Netlify.
+# Vercel and Cloudflare Pages will serve this site correctly with no config at all.
+
+[build]
+  publish = "."
+
+# Long cache for fingerprint-free static assets, revalidated on HTML.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# the Acquisitions page became Collaborations; keep the old address working
+[[redirects]]
+  from = "/acquisitions.html"
+  to = "/collaborations.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/acquisitions"
+  to = "/collaborations.html"
+  status = 301
+  force = true
